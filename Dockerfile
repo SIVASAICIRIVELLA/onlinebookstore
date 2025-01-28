@@ -1,19 +1,25 @@
-FROM centos
+FROM ubuntu:16.04
 
-MAINTAINER hello@gritfy.com
-
-RUN mkdir /opt/tomcat/
-
-WORKDIR /opt/tomcat
-RUN curl -O https://www-eu.apache.org/dist/tomcat/tomcat-8/v8.5.40/bin/apache-tomcat-8.5.40.tar.gz
-RUN tar xvfz apache*.tar.gz
-RUN mv apache-tomcat-8.5.40/* /opt/tomcat/.
-RUN yum -y install java
-RUN java -version
-
-WORKDIR /opt/tomcat/webapps
-RUN curl -O -L https://github.com/AKSarav/SampleWebApp/raw/master/dist/SampleWebApp.war
+# Install prerequisites
+RUN apt-get -y update &amp;&amp; apt-get -y upgrade
+RUN apt-get -y install openjdk-8-jdk wget
+RUN apt-get -y install curl
+RUN mkdir /usr/local/tomcat
+RUN wget https://downloads.apache.org/tomcat/tomcat-10/v10.0.20/bin/apache-tomcat-10.0.20.tar.gz -O /tmp/tomcat.tar.gz
+RUN cd /tmp &amp;&amp; tar xvfz tomcat.tar.gz
+RUN cp -Rv /tmp/apache-tomcat-10.0.20/* /usr/local/tomcat/
 
 EXPOSE 8080
+# java
+ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
+# Define default command.
+CMD ["bash"]
 
-CMD ["/opt/tomcat/bin/catalina.sh", "run"]
+MAINTAINER bhaskarndas@gmail.com
+
+
+WORKDIR /usr/local/tomcat/webapps
+RUN curl -O -L https://github.com/bhaskarndas/sample-war/raw/main/sampletest.war
+
+
+CMD ["https://net.cloudinfrastructureservices.co.uk/usr/local/tomcat/bin/catalina.sh", "run"]
