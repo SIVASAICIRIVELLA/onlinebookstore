@@ -1,4 +1,4 @@
-FROM centos:centos7
+FROM public.ecr.aws/docker/library/centos:centos7.9.2009
 
 # Install prerequisites
 # RUN apt-get -y update &amp;&amp; apt-get -y upgrade
