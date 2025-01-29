@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM centos:centos7
 
 # Install prerequisites
 RUN apt-get -y update &amp;&amp; apt-get -y upgrade
