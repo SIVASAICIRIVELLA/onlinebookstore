@@ -5,7 +5,8 @@ FROM public.ecr.aws/docker/library/centos:centos7.9.2009
 # RUN apt-get -y install openjdk-8-jdk wget
 # RUN apt-get -y install curl
 RUN mkdir /usr/local/tomcat
-RUN wget http://downloads.apache.org/tomcat/tomcat-10/v10.1.34/bin/apache-tomcat-10.1.34.tar.gz
+# RUN wget https://downloads.apache.org/tomcat/tomcat-10/v10.1.34/bin/apache-tomcat-10.1.34.tar.gz
+COPY apache-tomcat-10.1.34.tar.gz /tmp
 RUN cd /tmp &amp;&amp; tar xvfz tomcat.tar.gz
 RUN cp -Rv /tmp/apache-tomcat-10.0.20/* /usr/local/tomcat/
 
