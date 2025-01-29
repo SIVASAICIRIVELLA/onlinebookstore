@@ -11,7 +11,7 @@ RUN cd /tmp
 RUN pwd
 RUN ls -lrt
 RUN tar xvfz /tmp/apache-tomcat-10.1.34.tar.gz
-RUN cp -Rv /tmp/apache-tomcat-10.1.34/* /usr/local/tomcat/
+RUN cp -Rv /apache-tomcat-10.1.34/* /usr/local/tomcat/
 
 EXPOSE 8080
 # java
