@@ -8,7 +8,9 @@ RUN mkdir /usr/local/tomcat
 # RUN wget https://downloads.apache.org/tomcat/tomcat-10/v10.1.34/bin/apache-tomcat-10.1.34.tar.gz
 COPY apache-tomcat-10.1.34.tar.gz /tmp
 RUN cd /tmp
-RUN tar xvfz apache-tomcat-10.1.34.tar.gz
+RUN pwd
+RUN ls -lrt
+RUN tar xvfz /tmp/apache-tomcat-10.1.34.tar.gz
 RUN cp -Rv /tmp/apache-tomcat-10.1.34/* /usr/local/tomcat/
 
 EXPOSE 8080
