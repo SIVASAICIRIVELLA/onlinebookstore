@@ -4,6 +4,7 @@ COPY apache-tomcat-10.1.34.tar.gz /tmp
 RUN cd /tmp
 RUN pwd
 RUN ls -lrt /opt/
+RUN ls -ltr /
 RUN tar xvfz /tmp/apache-tomcat-10.1.34.tar.gz
 RUN mkdir -p /opt/tomcat
 RUN cp -Rv /tmp/apache-tomcat-10.1.34/* /opt/tomcat/
