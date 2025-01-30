@@ -14,4 +14,4 @@ EXPOSE 8080
 MAINTAINER bhaskarndas@gmail.com
 WORKDIR /opt/tomcat/webapps
 RUN curl -O -L https://github.com/bhaskarndas/sample-war/raw/main/sampletest.war
-CMD ["/opt/tomcat/bin/startup.sh", "run"]
+CMD ["/opt/tomcat/bin/catalina.sh", "run"]
