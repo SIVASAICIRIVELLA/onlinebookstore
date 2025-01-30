@@ -15,7 +15,7 @@ RUN cp -Rv /apache-tomcat-10.1.34/* /usr/local/tomcat/
 
 EXPOSE 8080
 # java
-ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
+# ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 # Define default command.
 CMD ["bash"]
 
