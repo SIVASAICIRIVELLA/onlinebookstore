@@ -14,7 +14,7 @@ EXPOSE 8080
 # Define default command.
 MAINTAINER bhaskarndas@gmail.com
 WORKDIR /opt/tomcat/webapps
-# COPY book.war /opt/tomcat/webapps/
-RUN curl -O -L https://github.com/bhaskarndas/sample-war/raw/main/sampletest.war
+COPY onlinebookstore.war /opt/tomcat/webapps/
+# RUN curl -O -L https://github.com/bhaskarndas/sample-war/raw/main/sampletest.war
 CMD ["/opt/tomcat/bin/catalina.sh", "run"]
 
