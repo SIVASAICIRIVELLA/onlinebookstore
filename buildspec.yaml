@@ -11,8 +11,21 @@ phases:
         - mvn clean package
         - mkdir output
         - cp target/*.war output/books.war
+    post_build: 
+    commands: 
+    - echo Build completed on `date` 
+    - echo pushing to repo
+    - docker push $REPOSITORY_URI:latest
+    - docker push $REPOSITORY_URI:$IMAGE_TAG
+    - ContainerName="onlinebookstore"
+    - ImageURI=$(cat imageDetail.json | jq -r '.050451368961.dkr.ecr.us-east-1.amazonaws.com/simple-docker-service-0affc7938aed')
+    - printf '[{"name":"CONTAINER_NAME","imageUri":"IMAGE_URI"}]' > imagedefinitions.json
+    - sed -i -e "s|CONTAINER_NAME|$ContainerName|g" imagedefinitions.json
+    - sed -i -e "s|IMAGE_URI|$ImageURI|g" imagedefinitions.json
+    - cat imagedefinitions.json
 artifacts:
   files:
         - 'output/*.war'
         - appspec.yaml
         - scripts/*
+        - imagedefinitions.json
